@@ -3,7 +3,7 @@ package seedu.duke.command;
 import org.junit.jupiter.api.Test;
 import seedu.duke.exception.GlobalMissingPeriodNumberTagException;
 import seedu.duke.exception.GlobalMissingYearTagException;
-import seedu.duke.exception.GlobalUnsupportedTagException;
+import seedu.duke.exception.GlobalUnsupportedTagCombinationException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -61,8 +61,8 @@ public class ListCommandTest {
         listCommand.setGlobalNumber(5);
 
         assertThrows(
-            GlobalUnsupportedTagException.class,
-            () -> listCommand.parseDateIntervalsTags()
+            GlobalUnsupportedTagCombinationException.class,
+            () -> listCommand.checkContainDateIntervalsTags()
         );
     }
 
@@ -73,7 +73,7 @@ public class ListCommandTest {
 
         assertThrows(
             GlobalMissingPeriodNumberTagException.class,
-            () -> listCommand.parseDateIntervalsTags()
+            () -> listCommand.checkContainDateIntervalsTags()
         );
     }
 
@@ -84,7 +84,7 @@ public class ListCommandTest {
 
         assertThrows(
             GlobalMissingPeriodNumberTagException.class,
-            () -> listCommand.parseDateIntervalsTags()
+            () -> listCommand.checkContainDateIntervalsTags()
         );
     }
 
@@ -95,7 +95,7 @@ public class ListCommandTest {
 
         assertThrows(
             GlobalMissingYearTagException.class,
-            () -> listCommand.parseDateIntervalsTags()
+            () -> listCommand.checkContainDateIntervalsTags()
         );
     }
 
@@ -105,7 +105,7 @@ public class ListCommandTest {
         listCommand.setGlobalYear(2010);
 
         assertDoesNotThrow(
-            () -> listCommand.parseDateIntervalsTags()
+            () -> listCommand.checkContainDateIntervalsTags()
         );
     }
 }
